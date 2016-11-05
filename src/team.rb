@@ -1,7 +1,7 @@
 module Team
   class Team
-    attr_reader :name :num_games :num_wins :score :rank
-    attr_writer :name :num_games :num_wins :score :rank
+    attr_reader :name, :num_games, :num_wins, :score, :rank
+    attr_writer :name, :num_games, :num_wins, :score, :rank
 
     def initialize(name)
       @name = name
@@ -19,7 +19,7 @@ module Team
     end
 
     def to_s
-      @name + " has won " + @num_wins +" out of " + num_games
+      @name + " has won " + @num_wins.to_s + " out of " + @num_games.to_s + " games"
     end
   end
 end
