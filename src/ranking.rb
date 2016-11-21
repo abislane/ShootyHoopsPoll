@@ -1,10 +1,8 @@
 require_relative 'team.rb'
+require_relative 'scraper.rb'
 
 module Ranking
   include Team
-  class Ranker
-
-  end
 
   def get_all_teams
     teams = {}
@@ -32,9 +30,15 @@ module Ranking
 end
 
 include Ranking
+include Scraper
 
 ranks = Ranking::get_all_teams
 
 ranks.each do |name, team|
   puts team.to_s
 end
+
+start_date = Date.new(2016, 11, 11)
+end_date = Date.today.prev_day
+games = GameScraper.get_all_games(start_date, end_date)
+puts games

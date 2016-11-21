@@ -1,9 +1,11 @@
 require 'open-uri'
 require 'nokogiri'
 require 'date'
+require_relative 'game.rb'
 
 module Scraper
   class GameScraper
+    include Game
     def self.get_games(day)
       puts 'processing day '+day.to_s
       path = 'http://www.sports-reference.com/cbb/boxscores/index.cgi?month='+day.mon.to_s+'&day='+day.day.to_s+'&year='+day.year.to_s
@@ -30,7 +32,7 @@ module Scraper
         res['loser'] = game.search('tr.loser').search('a')[0].content
         res['loser score'] = game.search('tr.loser').search('td.right')[0].content.to_i
 
-        games.push(res)
+        games.push(Game.new(res))
       end
 
       #puts games
@@ -39,12 +41,12 @@ module Scraper
   end
 end
 
-include Scraper
+#include Scraper
 
-puts GameScraper.get_games(Date.new(2016, 4, 2))
+#puts GameScraper.get_games(Date.new(2016, 4, 2))
 
-mm = GameScraper.get_all_games(Date.new(2016, 3, 15), Date.new(2016, 4, 4))
-puts "processed"
-mm.each do |game|
-  puts game
-end
+#mm = GameScraper.get_all_games(Date.new(2016, 3, 15), Date.new(2016, 4, 4))
+#puts "processed"
+#mm.each do |game|
+#  puts game
+#end
