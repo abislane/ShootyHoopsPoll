@@ -18,18 +18,19 @@ module Ranking
     def rank_teams
       @games.each do |game|
         if @teams.key?(game.winner)
-          teams[game.winner].num_wins += 1
-          teams[game.winner].num_games += 1
+          teams[game.winner].add_game(true, game.win_score, 0)
         else
           #puts game.winner + ' not found'
         end
 
         if @teams.key?(game.loser)
-          teams[game.loser].num_games += 1
+          teams[game.loser].add_game(false, game.lose_score, 0)
         else
           #puts game.loser + ' not found'
         end
       end
+
+      @ranks = @teams.values.sort
     end
 
     def get_all_teams
@@ -67,6 +68,6 @@ end
 include Ranking
 
 ranks = Ranker.new
-ranks.teams.each_value do |record|
+ranks.ranks.each do |record|
   puts record
 end

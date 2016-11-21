@@ -1,5 +1,6 @@
 module Team
   class Team
+    include Comparable
     attr_reader :name, :num_games, :num_wins, :score, :rank
     attr_writer :name, :num_games, :num_wins, :score, :rank
 
@@ -11,11 +12,17 @@ module Team
       @rank = 1
     end
 
+    def <=>(other)
+      return @score / @num_games <=> other.score / other.num_games
+    end
+
     def add_game(won, points, opp_rank)
       @num_games += 1
       if(won)
-        @games_won += 1
+        @num_wins += 1
       end
+
+      @score += points 
     end
 
     def to_s
