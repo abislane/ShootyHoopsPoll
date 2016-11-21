@@ -3,7 +3,7 @@ Cal State Fullerton
 Cal State Northridge
 Hawaii
 Long Beach State
-UC Davis
-UC Irvine
-UC Riverside
-UC Santa Barbara
+UC-Davis
+UC-Irvine
+UC-Riverside
+UCSB

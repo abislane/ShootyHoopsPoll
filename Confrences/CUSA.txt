@@ -1,6 +1,6 @@
 Charlotte
 Florida Atlantic
-FIU
+Florida International
 Louisiana Tech
 Marshall
 Middle Tennessee
@@ -8,7 +8,7 @@ North Texas
 Old Dominion
 Rice
 Southern Miss
-UAB
+Alabama-Birmingham
 UTEP
 UTSA
 Western Kentucky
